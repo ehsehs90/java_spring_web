@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+table {
+	margin: 0 auto;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+th {
+	background-color: black;
+	color: yellow;
+}
+table tr:nth-child(2n) {
+	background-color: gray;
+}
+table tr:hover {
+	background-color: orange;
+}

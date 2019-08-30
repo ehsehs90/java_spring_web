@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>file upload</title>
+<style>
+	input {
+		margin: 5px;
+	}
+</style>
+</head>
+<body>
+	<h1>file upload</h1>
+	<form action="./upload.do" method="post" enctype="multipart/form-data">
+		<label>name : <input type="text" name="name"></label><br>
+		<label>file : <input type="file" name="file"></label><br>
+		<input type="submit">
+		<input type="reset">
+	</form>
+</body>
+</html>

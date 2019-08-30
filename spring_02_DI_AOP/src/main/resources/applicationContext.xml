@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<context:annotation-config />
+	<context:component-scan
+		base-package="spring.biz.user" />
+	<!-- <context:component-scan base-package="spring.biz.board"/> -->
+	<aop:aspectj-autoproxy />
+
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource"
+		p:driverClassName="oracle.jdbc.OracleDriver"
+		p:url="jdbc:oracle:thin:@70.12.115.54:1521:xe" 
+		p:username="scott"
+		p:password="TIGER" />
+
+	<bean id="template"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg ref="dataSource" />
+	</bean>
+
+	<!-- Mybatis -->
+	<bean id="sqlSessionFactoryBean"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation"
+			value="classpath:/mybatis_config.xml" />
+		<!-- <property name="mapperLocations" value="classpath:/mapper/user_mapper.xml"/> -->
+	</bean>
+	<!-- BoardMybatis -->
+	<!-- <bean id="sqlSessionFactoryBean2" class="org.mybatis.spring.SqlSessionFactoryBean"> -->
+	<!-- <property name="dataSource" ref="dataSource"/> -->
+	<!-- <property name="configLocation" value="classpath:/mybatis_config.xml"/> -->
+	<!-- <property name="mapperLocations" value="classpath:/mapper/board_mapper.xml"/> -->
+	<!-- </bean> -->
+
+	<bean id="sqlSession"
+		class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactoryBean" />
+	</bean>
+
+	<!-- <bean id="sqlSession2" class="org.mybatis.spring.SqlSessionTemplate"> -->
+	<!-- <constructor-arg ref="sqlSessionFactoryBean2"/> -->
+	<!-- </bean> -->
+
+
+	<bean id="advice" class="aop.Advice"></bean>
+	<aop:config>
+		<aop:pointcut
+			expression="execution(* spring.biz.user.service.*Impl.*(..))"
+			id="mp" />
+		<aop:aspect ref="advice">
+<!-- 			<aop:before pointcut-ref="mp" method="log" /> -->
+			<aop:after-returning pointcut-ref="mp"
+			method="after_Return" returning="data" />
+			<!-- <aop:around pointcut-ref="mp" method="around" /> -->
+			<!-- <aop:after-throwing pointcut-ref="mp" method="" /> -->
+		</aop:aspect>
+	</aop:config>
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename">
+			<value>messages.message</value>
+		</property>
+	</bean>
+</beans>

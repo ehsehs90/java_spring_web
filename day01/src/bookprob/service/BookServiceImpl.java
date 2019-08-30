@@ -1,0 +1,37 @@
+package bookprob.service;
+
+import java.util.List;
+
+import bookprob.dao.BookDAO;
+import bookprob.vo.BookVO;
+
+public class BookServiceImpl implements BookService{
+	private BookDAO dao;
+	
+	public BookServiceImpl() {
+		super();
+	}
+
+	public BookServiceImpl(BookDAO dao) {
+		super();
+		this.dao = dao;
+	}
+
+	public BookDAO getDao() {
+		return dao;
+	}
+
+	public void setDao(BookDAO dao) {
+		this.dao = dao;
+	}
+
+	@Override
+	public List<BookVO> bookList() {
+		return dao.bookList();
+	}
+	
+	@Override
+	public int addBook(BookVO vo) throws Exception {
+		return dao.addBook(vo);
+	}
+}

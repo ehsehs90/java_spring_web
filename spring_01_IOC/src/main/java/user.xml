@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+
+	<context:annotation-config/>
+	<context:component-scan base-package="spring.biz"/>
+<!-- 	<bean id=jdbc class="spring.biz.user.dao.UserDAO_JDBC"></bean> -->
+<!-- 	<bean id="dao" class="spring.biz.user.dao.UserDAO_JDBC"></bean> -->
+<!-- 	<bean id="spring" class="spring.biz.user.dao.UserDAO_Spring"></bean> -->
+<!-- 	<bean id="mybatis" class="spring.biz.user.dao.UserDAO_MyBatis"></bean> -->
+	
+<!-- 	<bean id="userservice" class="spring.biz.user.service.UserServiceImpl" -->
+<!-- 	autowire="byName"> -->
+<!-- 		<constructor-arg ref="mybatis"/> -->
+<!-- 		<property name="dao" ref="jdbc"/> -->
+<!-- 	</bean> -->
+<!-- 	<bean id="user01" class="spring.biz.user.vo.UserVO"/> -->
+<!-- 	<bean id="user02" class="spring.biz.user.vo.UserVO"> -->
+<!-- 		<property name="userid" value="java01"/> -->
+<!-- 		<property name="username" value="홍길동"/> -->
+<!-- 		<property name="email" value="@.net"/> -->
+<!-- 		<property name="phone" value="2358-0584"/> -->
+<!-- 		<property name="address" value="안양시"/> -->
+<!-- 		<property name="userpwd" value="1354"/> -->
+<!-- 	</bean> -->
+	
+<!-- 	<bean id="user03" class="spring.biz.user.vo.UserVO" -->
+<!-- 	p:userid="java02" -->
+<!-- 	p:username="장길동" -->
+<!-- 	p:email="aa@naver.com" -->
+<!-- 	p:phone="4568-5465" -->
+<!-- 	p:address="천안"> -->
+<!-- 	</bean> -->
+	 
+</beans>

@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap');
+
+a.btn {
+	font-family: 'Baloo Bhai', cursive;
+	
+	text-align: center;
+	display: block;
+	width: 100px;
+	height: 40px;
+    line-height:40px;  
+	border: 1px solid blue;
+	border-radius: 15px;
+    box-shadow: 5px 5px 5px gray;
+	margin: 0 auto;
+	text-decoration: none;
+	font-size: 1.2em;
+	font-weight: bold;
+	color: black;
+	background: gray;
+}
+
+a.btn:hover {
+	color: red;
+	text-shadow: 5px 5px 5px white;
+}
